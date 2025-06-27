@@ -14,5 +14,21 @@ It was built and refined with the help of **ChatGPT** to automate and optimize c
 - 🔎 Collects detailed system info for local privilege escalation
 - 📁 Categorized output with clear subheadings
 - 📝 Generates both human-readable `.txt` and interactive `.html` reports
-- 🧠 Includes many checks: SUID files, SSH keys, exposed credentials, service misconfigs, API keys, and more
+- 🧠 Includes many checks: System info, User info, SUID files, SSH keys, exposed credentials, service misconfigs, API keys, and more
 - 💡 Inspired by real-world use of LinPEAS and LinEnum — but cleaner and faster
+
+## 📦 Output Format
+
+- `system_enumeration.txt` – Raw output in plain text format
+- `system_report.html` – Expandable HTML report with search & filtering support
+
+---
+
+## 🚀 Usage
+
+```bash
+$ git clone ...
+$ cd ... 
+$ chmod +x enumeration_script.sh
+$ chmod +x run_report.py
+$ python3 run_report.py    
