@@ -33,6 +33,7 @@ $ chmod +x enumeration_script.sh
 $ chmod +x run_report.py
 $ python3 run_report.py    
 
+```
 --
 
 ## 📷 Output Images
