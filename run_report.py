@@ -16,6 +16,7 @@ def convert_line_endings_to_unix(file_path):
 
 def run_system_info():
     print("[*] Running enumeration_script.sh...")
+    print("[!] This might take up to 5 minutes depending on system size...")
 
     # ✅ Normalize line endings before execution
     convert_line_endings_to_unix(SCRIPT_PATH)
