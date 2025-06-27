@@ -27,8 +27,8 @@ It was built and refined with the help of **ChatGPT** to automate and optimize c
 ## 🚀 Usage
 
 ```bash
-$ git clone ...
-$ cd ... 
+$ git clone https://github.com/VnVF/linux-audit-report.git 
+$ cd linux-audit-report
 $ chmod +x enumeration_script.sh
 $ chmod +x run_report.py
 $ python3 run_report.py    
