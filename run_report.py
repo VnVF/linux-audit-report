@@ -7,8 +7,19 @@ OUTPUT_TXT = "system_enumeration.txt"
 OUTPUT_HTML = "system_report.html"
 SCRIPT_PATH = "./enumeration_script.sh"
 
+def convert_line_endings_to_unix(file_path):
+    with open(file_path, 'rb') as f:
+        content = f.read()
+    content = content.replace(b'\r\n', b'\n')
+    with open(file_path, 'wb') as f:
+        f.write(content)
+
 def run_system_info():
     print("[*] Running enumeration_script.sh...")
+
+    # ✅ Normalize line endings before execution
+    convert_line_endings_to_unix(SCRIPT_PATH)
+
     result = subprocess.run(["bash", SCRIPT_PATH], capture_output=True, text=True)
     if result.returncode != 0:
         print("[-] Failed to run enumeration_script.sh")
