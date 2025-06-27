@@ -1,19 +1,30 @@
 import subprocess
 from pathlib import Path
 from html import escape
+import sys
 
 OUTPUT_TXT = "system_enumeration.txt"
 OUTPUT_HTML = "system_report.html"
 SCRIPT_PATH = "./enumeration_script.sh"
 
 def run_system_info():
-    print("[*] Running system_info.sh...")
+    print("[*] Running enumeration_script.sh...")
     result = subprocess.run(["bash", SCRIPT_PATH], capture_output=True, text=True)
     if result.returncode != 0:
-        print("[-] Failed to run system_info.sh")
+        print("[-] Failed to run enumeration_script.sh")
         print(result.stderr)
     else:
         print("[+] Script executed successfully.")
+
+def validate_output(file_path):
+    file = Path(file_path)
+    if not file.exists():
+        print(f"[-] Output file '{file_path}' not found. Aborting.")
+        sys.exit(1)
+    if file.stat().st_size == 0:
+        print(f"[-] Output file '{file_path}' is empty. Aborting.")
+        sys.exit(1)
+    print(f"[+] Output file '{file_path}' is valid.")
 
 def parse_report(file_path):
     content = Path(file_path).read_text(errors='ignore')
@@ -142,7 +153,7 @@ def write_html(content_blocks, headers):
 <body>
     <h1>Linux System Report</h1>
     <p style="background: #fff3cd; border: 1px solid #ffeeba; padding: 10px; color: #856404;">
-    ⚠️ Some findings are collapsed because they use too much space on the screen. Click on the subheading when you want to expand the resultss.
+    ⚠️ Some findings are collapsed because they use too much space on the screen. Click on the subheading when you want to expand the results.
 </p>
     <div class="filter-bar">
         <label for="headerFilter">Header:</label>
@@ -163,6 +174,7 @@ def write_html(content_blocks, headers):
 
 def main():
     run_system_info()
+    validate_output(OUTPUT_TXT)
     sections = parse_report(OUTPUT_TXT)
     html_sections, headers = build_html(sections)
     write_html(html_sections, headers)
