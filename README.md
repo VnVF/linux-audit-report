@@ -32,3 +32,10 @@ $ cd linux-audit-report
 $ chmod +x enumeration_script.sh
 $ chmod +x run_report.py
 $ python3 run_report.py    
+
+--
+
+## 📷 Output Images
+![image](https://github.com/user-attachments/assets/d53da09c-6b8e-4370-bea8-4e08476f2eef)
+![image](https://github.com/user-attachments/assets/465dedd5-1a21-4a49-972b-fa3121b10652)
+
